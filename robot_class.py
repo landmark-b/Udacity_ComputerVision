@@ -1,6 +1,6 @@
 from math import *
 import random
-
+import pdb
 
 ### ------------------------------------- ###
 # Below, is the robot class
@@ -66,7 +66,8 @@ class robot:
     #
     
     ## TODO: paste your complete the sense function, here
-    ## make sure the indentation of the code is correct
+    
+    ## TODO: complete the sense function
     def sense(self):
         ''' This function does not take in any parameters, instead it references internal variables
             (such as self.landamrks) to measure the distance between the robot and any landmarks
@@ -76,6 +77,8 @@ class robot:
             This function should account for measurement_noise and measurement_range.
             One item in the returned list should be in the form: [landmark_index, dx, dy].
             '''
+        
+        ### self.x, self.y, self.landmarkを用いてLandmarkとの距離dx, dyを計算し返す
            
         measurements = []
         
@@ -86,10 +89,28 @@ class robot:
         ## 2. account for measurement noise by *adding* a noise component to dx and dy
         ##    - The noise component should be a random value between [-1.0, 1.0)*measurement_noise
         ##    - Feel free to use the function self.rand() to help calculate this noise component
+        ##    - It may help to reference the `move` function for noise calculation
         ## 3. If either of the distances, dx or dy, fall outside of the internal var, measurement_range
         ##    then we cannot record them; if they do fall in the range, then add them to the measurements list
         ##    as list.append([index, dx, dy]), this format is important for data creation done later
         
+        #self.x, self.y, self.landmark
+        #distance = ((self.landmark[0]-self.x)**2 + (self.landmark[1]-self.y)**2)**(1/2)
+
+        # pdb.set_trace()
+        for i in range(self.num_landmarks):
+            dx = (self.landmarks[i][0]-self.x) + self.rand() * self.measurement_noise
+            dy = (self.landmarks[i][1]-self.y) + self.rand() * self.measurement_noise
+            
+
+            if abs(dx) > self.measurement_range or abs(dy) > self.measurement_range:
+            #if dx > self.measurement_range or dy > self.measurement_range:
+                continue
+                #measurements.append([i, dx, dy])
+            else:
+                measurements.append([i, dx, dy])
+            
+            
         ## TODO: return the final, complete list of measurements
         return measurements
 
