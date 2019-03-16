@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Landmark Detection & Robot Tracking (SLAM)
 
 ## Project Overview
@@ -131,3 +132,6 @@ Alternatively, your submission could consist of only the **GitHub link** to your
 
 
 LICENSE: This project is licensed under the terms of the MIT license.
+=======
+# Udacity_ComputerVision
+>>>>>>> origin/master
